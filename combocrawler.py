@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 import sys
 import os
+from shutil import copyfile
 if sys.version_info >= (3, 0): #Python 3
     import urllib.request as request
 else:
@@ -11,9 +12,14 @@ else:
 import urllib
 import time
 
-SEARCHFOR = "\"combo\" site:anonfile.com"
+SEARCHFOR = ["\"combo\" site:anonfile.com","\"Combo\" site:anonfile.com"]
 DOWNLOADED = "downloaded.log"
 DOWNPATH = "downloads"
+DESTPATH = "inputbreach"
+
+def extract(path):
+	if path.lower().endswith(".txt"):
+		copyfile(path,os.path.join(DESTPATH,os.path.basename(path)))
 
 done = []
 #scrape anonfile and downloads
@@ -25,24 +31,27 @@ except:
 	pass
 
 f = open(DOWNLOADED,"a+")
-query = search(SEARCHFOR)
-
-i = 0
-for url in query:
-    time.sleep(10)
-    dest = url.split("/")[-1]
-    if not dest+"\n" in done:
-        try:
-            r = requests.get(url)
-            html = BeautifulSoup(r.text,"html5lib")
-            down = html.find(id="download-url")
-            down = down.get("href")
-            print("downloading: {}".format(down))
-            request.urlretrieve(down,os.path.join(DOWNPATH,str(i)+dest))
-            f.write(dest+"\n")
-            i+=1
-            f.flush()
-        except Exception as e:
-            print("Error in {}:{}".format(url,e))
+for s in SEARCHFOR:
+	query = search(s)
+	i = 0
+	for url in query:
+	    dest = url.split("/")[-1]
+	    if not dest+"\n" in done:
+	        try:
+	            r = requests.get(url)
+	            html = BeautifulSoup(r.text,"html.parser")
+	            down = html.find(id="download-url")
+	            down = down.get("href")
+	            print("downloading: {}".format(down))
+	            path = os.path.join(DOWNPATH,str(i)+dest)
+	            request.urlretrieve(down,path)
+	            extract(path)
+	            os.remove(path)
+	            f.write(dest+"\n")
+	            i+=1
+	            f.flush()
+	        except Exception as e:
+	            print("Error in {}:{}".format(url,e))
+	    time.sleep(10) # avoids google ban
 
 f.close()
