@@ -1,0 +1,266 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# data dirs
+data/*
+data/1/*
+data/2/*
+data/a/*
+data/a/b/*
+data/a/d/*
+data/a/l/*
+data/a/l/e/*
+data/a/l/e/x/*
+data/a/m/*
+data/a/n/*
+data/a/n/d/*
+data/a/n/d/r/*
+data/a/n/d/r/e/*
+data/a/r/*
+data/a/s/*
+data/b/*
+data/b/a/*
+data/b/e/*
+data/b/i/*
+data/b/l/*
+data/b/o/*
+data/b/r/*
+data/b/u/*
+data/c/*
+data/c/a/*
+data/c/a/r/*
+data/c/h/*
+data/c/h/r/*
+data/c/o/*
+data/c/r/*
+data/d/*
+data/d/a/*
+data/d/a/n/*
+data/d/e/*
+data/d/i/*
+data/d/o/*
+data/d/r/*
+data/e/*
+data/e/l/*
+data/f/*
+data/f/a/*
+data/f/r/*
+data/g/*
+data/g/a/*
+data/g/e/*
+data/g/i/*
+data/g/o/*
+data/g/r/*
+data/h/*
+data/h/a/*
+data/h/e/*
+data/h/o/*
+data/i/*
+data/i/n/*
+data/j/*
+data/j/a/*
+data/j/e/*
+data/j/o/*
+data/j/u/*
+data/k/*
+data/k/a/*
+data/k/e/*
+data/k/i/*
+data/k/o/*
+data/k/r/*
+data/l/*
+data/l/a/*
+data/l/e/*
+data/l/i/*
+data/l/o/*
+data/l/u/*
+data/m/*
+data/m/a/*
+data/m/a/r/*
+data/m/a/r/i/*
+data/m/e/*
+data/m/i/*
+data/m/o/*
+data/m/u/*
+data/n/*
+data/n/a/*
+data/n/a/t/*
+data/n/e/*
+data/n/i/*
+data/n/o/*
+data/o/*
+data/o/l/*
+data/p/*
+data/p/a/*
+data/p/e/*
+data/p/i/*
+data/p/o/*
+data/p/r/*
+data/q/*
+data/r/*
+data/r/a/*
+data/r/e/*
+data/r/i/*
+data/r/o/*
+data/s/*
+data/s/a/*
+data/s/e/*
+data/s/e/r/*
+data/s/h/*
+data/s/h/a/*
+data/s/i/*
+data/s/o/*
+data/s/t/*
+data/s/t/e/*
+data/s/u/*
+data/t/*
+data/t/a/*
+data/t/e/*
+data/t/h/*
+data/t/i/*
+data/t/o/*
+data/t/r/*
+data/u/*
+data/v/*
+data/v/a/*
+data/v/i/*
+data/w/*
+data/w/w/*
+data/w/w/w/*
+data/w/w/w/symbols/*
+data/x/*
+data/y/*
+data/y/a/*
+data/z/*
+inputbreach/*
+
+# debug and logs
+imported.log
+debug
