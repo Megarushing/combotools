@@ -262,5 +262,7 @@ data/z/*
 inputbreach/*
 
 # debug and logs
+downloads/*
 imported.log
+downloaded.log
 debug

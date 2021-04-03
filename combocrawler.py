@@ -3,6 +3,7 @@ from googlesearch import search
 from bs4 import BeautifulSoup
 import requests
 import sys
+import os
 if sys.version_info >= (3, 0): #Python 3
     import urllib.request as request
 else:
@@ -11,17 +12,19 @@ import urllib
 import time
 
 SEARCHFOR = "\"combo\" site:anonfile.com"
+DOWNLOADED = "downloaded.log"
+DOWNPATH = "downloads"
 
 done = []
 #scrape anonfile and downloads
 try:
-	f = open("result.txt","r")
+	f = open(DOWNLOADED,"r")
 	done = f.readlines()
 	f.close()
 except:
 	pass
 
-f = open("result.txt","a+")
+f = open(DOWNLOADED,"a+")
 query = search(SEARCHFOR)
 
 i = 0
@@ -34,11 +37,12 @@ for url in query:
             html = BeautifulSoup(r.text,"html5lib")
             down = html.find(id="download-url")
             down = down.get("href")
-            request.urlretrieve(down,str(i)+dest)
+            print("downloading: {}".format(down))
+            request.urlretrieve(down,os.path.join(DOWNPATH,str(i)+dest))
             f.write(dest+"\n")
             i+=1
             f.flush()
         except Exception as e:
-            print(url,":",e)
+            print("Error in {}:{}".format(url,e))
 
 f.close()
