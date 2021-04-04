@@ -33,7 +33,7 @@ Sorts files in `data` folder and removes duplicates
 ### count_total.sh
 Counts how many username:password combos we have imported in the `data`
 ### combocrawler.py
-Python script to scrape after nee combos in anonfiles, download and extract them into `inputbreach` folder
+Python script to scrape after new combos in anonfiles using google search, it also downloads and extracts them into `inputbreach` folder
 
 ## Disclamer
 Use this only for threat analysis and educational purposes, please.
