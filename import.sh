@@ -99,4 +99,4 @@ shasum="$(sha256sum "$inputfile" | $CUT -d' ' -f1)"
 	fi
 done
 
-#./sorter.sh
+./sort.sh
