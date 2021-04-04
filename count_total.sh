@@ -49,7 +49,7 @@ else
 fi
 
 total=0;
-find data | $SORT | while read in;
+find data -not -path '*/\.*' | $SORT | while read in;
 do
   if [ -f "$in" ]; then
     count=$($WC -l $in | $CUT -d' ' -f1);

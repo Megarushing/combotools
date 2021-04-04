@@ -50,7 +50,7 @@ fi
 
 # data folder $SORTing
 echo "[*] sorting breaches..." | $TEE -a debug
-find data | $SORT | while read path;
+find data -not -path '*/\.*' | $SORT | while read path;
 do
 	if [ -f $path ]; then
 		echo "[*] sorting $path" >> debug

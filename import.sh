@@ -48,6 +48,17 @@ else
 	WC=gwc
 fi
 
+# bootstraps file structure for current tree
+filenames="0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v x y z symbols"
+
+for i in $filenames
+	do for f in $(find data -type d | sed "s/$/\/$i/")
+		do if ! [[ -e $f ]]; 
+			then touch $f
+		fi
+	done
+done
+
 #script start
 ls ./inputbreach |$SORT| sed 's/^/.\/inputbreach\//' | while read inputfile;
 do
@@ -57,7 +68,7 @@ shasum="$(sha256sum "$inputfile" | $CUT -d' ' -f1)"
 		cat imported.log | grep "$shasum" | $TEE -a debug
 
 		# importing to data folder
-		find data | $SORT | while read path;
+		find data -not -path '*/\.*' | $SORT | while read path;
 		do
 			if [ -f $path ]; then
 				filter=$(echo "$path" | sed 's/^.*data//' | sed 's#/##g' | sed 's/symbols$//g' )
