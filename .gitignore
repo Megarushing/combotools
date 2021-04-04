@@ -266,3 +266,5 @@ downloads/*
 imported.log
 downloaded.log
 debug
+nohup.out
+

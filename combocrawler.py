@@ -8,8 +8,10 @@ from pyunpack import Archive
 from shutil import copyfile
 if sys.version_info >= (3, 0): #Python 3
     import urllib.request as request
+    from urllib.parse import quote
 else:
     import urllib as request
+    from urllin import quote
 import urllib
 import time
 
@@ -47,7 +49,7 @@ for s in SEARCHFOR:
 	            r = requests.get(url)
 	            html = BeautifulSoup(r.text,"html.parser")
 	            down = html.find(id="download-url")
-	            down = down.get("href")
+	            down = quote(down.get("href").strip()).replace("%3A//","://")
 	            print("downloading: {}".format(down))
 	            path = os.path.join(DOWNPATH,str(i)+dest)
 	            request.urlretrieve(down,path)
@@ -58,6 +60,6 @@ for s in SEARCHFOR:
 	            f.flush()
 	        except Exception as e:
 	            print("Error in {}:{}".format(url,e))
-	    time.sleep(0) # avoids google ban
+	    time.sleep(10) # avoids google ban
 
 f.close()
