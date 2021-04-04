@@ -43,7 +43,7 @@ for s in SEARCHFOR:
 	query = search(s)
 	i = 0
 	for url in query:
-	    dest = url.split("/")[-1]
+	    dest = url.split("/")[-1].strip().strip("'")
 	    if not dest+"\n" in done:
 	        try:
 	            r = requests.get(url)
