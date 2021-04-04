@@ -11,7 +11,7 @@ if sys.version_info >= (3, 0): #Python 3
     from urllib.parse import quote
 else:
     import urllib as request
-    from urllin import quote
+    from urllib import quote
 import urllib
 import time
 
