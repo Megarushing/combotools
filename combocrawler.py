@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 import sys
 import os
+from pyunpack import Archive
 from shutil import copyfile
 if sys.version_info >= (3, 0): #Python 3
     import urllib.request as request
@@ -18,8 +19,13 @@ DOWNPATH = "downloads"
 DESTPATH = "inputbreach"
 
 def extract(path):
-	if path.lower().endswith(".txt"):
-		copyfile(path,os.path.join(DESTPATH,os.path.basename(path)))
+	try:
+		if path.lower().endswith(".txt"):
+			copyfile(path,os.path.join(DESTPATH,os.path.basename(path)))
+		else:
+			Archive(path).extractall(DESTPATH)
+	except Exception as e:
+		print("Error extracting {}:{}".format(path,e))
 
 done = []
 #scrape anonfile and downloads
@@ -52,6 +58,6 @@ for s in SEARCHFOR:
 	            f.flush()
 	        except Exception as e:
 	            print("Error in {}:{}".format(url,e))
-	    time.sleep(10) # avoids google ban
+	    time.sleep(0) # avoids google ban
 
 f.close()
