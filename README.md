@@ -6,7 +6,12 @@ Many of the tools listed here were taken from CompilationOfManyBreaches (COMB) p
 I like the simplicity of them, they are easy to read, understand and rely solely on the highly efficient linux standard binaries.
    
 ## Quick Start
-To use this on mac osx I recommend installing homebrew and doing first:
+First download this project:
+   ```
+   git clone https://github.com/Megarushing/combotools.git
+   cd combotools
+   ```
+Mac OSX only - to use this I recommend installing homebrew and doing first:
    ```
    brew install coreutils
    ```
@@ -16,7 +21,7 @@ Then get started
    python combocrawler.py
    ./import.sh
    ```
-Then count your combos
+Count your booty
    ```
    ./count_total.sh
    ```
