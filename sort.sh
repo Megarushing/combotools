@@ -53,7 +53,7 @@ echo "[*] sorting breaches..." | $TEE -a debug
 find data -not -path '*/\.*' | $SORT | while read path;
 do
 	if [ -f $path ]; then
-		echo "[*] sorting $path" >> debug
+		echo "[*] sorting $path" | $TEE -a debug
 		$SORT $path -u -o $path\_
 		mv $path\_ $path
 	fi
