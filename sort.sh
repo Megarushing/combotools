@@ -49,11 +49,11 @@ else
 fi
 
 # data folder $SORTing
-echo "[*] sorting breaches..." | $TEE -a debug
+echo "[*] sorting breaches..." | $TEE -a debug.log
 find data -not -path '*/\.*' | $SORT | while read path;
 do
 	if [ -f $path ]; then
-		echo "[*] sorting $path" | $TEE -a debug
+		echo "[*] sorting $path" | $TEE -a debug.log
 		$SORT $path -u -o $path\_
 		mv $path\_ $path
 	fi

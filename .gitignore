@@ -265,6 +265,6 @@ inputbreach/*
 downloads/*
 imported.log
 downloaded.log
-debug
+debug.log
 nohup.out
-
+notes.txt

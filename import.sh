@@ -62,10 +62,10 @@ done
 #script start
 ls ./inputbreach |$SORT| sed 's/^/.\/inputbreach\//' | while read inputfile;
 do
-echo "[*] Checking breach $inputfile checksum..." | $TEE -a debug
+echo "[*] Checking breach $inputfile checksum..." | $TEE -a debug.log
 shasum="$(sha256sum "$inputfile" | $CUT -d' ' -f1)"
 	if [ "$(cat imported.log | grep "$shasum" | $WC -l)" == "0" ]; then
-		cat imported.log | grep "$shasum" | $TEE -a debug
+		cat imported.log | grep "$shasum" | $TEE -a debug.log
 
 		# importing to data folder
 		find data -not -path '*/\.*' | $SORT | while read path;
@@ -73,29 +73,29 @@ shasum="$(sha256sum "$inputfile" | $CUT -d' ' -f1)"
 			if [ -f $path ]; then
 				filter=$(echo "$path" | sed 's/^.*data//' | sed 's#/##g' | sed 's/symbols$//g' )
 				if [ "$(echo "$path" | grep "symbols$")" == "" ]; then
-					echo "Filter: $filter	Path: $path" | $TEE -a debug
-					grep -ai "^$filter\w*\b" $inputfile | LC_CTYPE=C sed 's/\r//g' | grep -a @ >> $path | $TEE -a debug
+					echo "Filter: $filter	Path: $path" | $TEE -a debug.log
+					grep -ai "^$filter\w*\b" $inputfile | LC_CTYPE=C sed 's/\r//g' | grep -a @ >> $path | $TEE -a debug.log
 				else
-					echo "Filter: $filter[symbol]	Path: $path" | $TEE -a debug
-					grep -ai "^$filter\w*\b" $inputfile | grep -aiv "^$filter[a-zA-Z0-9]\w*\b" | LC_CTYPE=C sed 's/\r//g' | grep -a @ >> $path | $TEE -a debug
+					echo "Filter: $filter[symbol]	Path: $path" | $TEE -a debug.log
+					grep -ai "^$filter\w*\b" $inputfile | grep -aiv "^$filter[a-zA-Z0-9]\w*\b" | LC_CTYPE=C sed 's/\r//g' | grep -a @ >> $path | $TEE -a debug.log
 				fi
 			fi
 		done
 
 
 
-		echo "[*] Logging sha256sum into imported.log..." | $TEE -a debug
-		echo "$($DATE --rfc-3339=date): $(sha256sum "$inputfile")	$($DU -h "$inputfile"|$CUT -d'	' -f1)" | $TEE -a imported.log | $TEE -a debug
-		echo "------------------------------------------" | $TEE -a debug
+		echo "[*] Logging sha256sum into imported.log..." | $TEE -a debug.log
+		echo "$($DATE --rfc-3339=date): $(sha256sum "$inputfile")	$($DU -h "$inputfile"|$CUT -d'	' -f1)" | $TEE -a imported.log | $TEE -a debug.log
+		echo "------------------------------------------" | $TEE -a debug.log
 
-		echo "[*] Removing breach file $inputfile..." | $TEE -a debug
-		rm "$inputfile" | $TEE -a debug
+		echo "[*] Removing breach file $inputfile..." | $TEE -a debug.log
+		rm "$inputfile" | $TEE -a debug.log
 	else
-		echo "[*] This breach is already imported." | $TEE -a debug
-		cat imported.log | grep "$shasum" | $TEE -a debug
-		echo "[*] Removing breach file $inputfile..." | $TEE -a debug
-		rm "$inputfile" | $TEE -a debug
-		echo "------------------------------------" | $TEE -a debug
+		echo "[*] This breach is already imported." | $TEE -a debug.log
+		cat imported.log | grep "$shasum" | $TEE -a debug.log
+		echo "[*] Removing breach file $inputfile..." | $TEE -a debug.log
+		rm "$inputfile" | $TEE -a debug.log
+		echo "------------------------------------" | $TEE -a debug.log
 	fi
 done
 
