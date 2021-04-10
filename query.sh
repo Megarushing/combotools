@@ -51,17 +51,17 @@ fi
 dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 if [ "$1" != "" ]; then
-	letter1=$(echo ${1,,}|$CUT -b1)
+	letter1=$(echo ${1} | $CUT -b1)
 	if [[ $letter1 == [a-zA-Z0-9] ]]; then
 		if [ -f "$dir/data/$letter1" ]; then
 			grep -ai "^$1" "$dir/data/$letter1"
 		else
-			letter2=$(echo ${1,,}|$CUT -b2)
+			letter2=$(echo ${1} | $CUT -b2)
 			if [[ $letter2 == [a-zA-Z0-9] ]]; then
 				if [ -f "$dir/data/$letter1/$letter2" ]; then
 					grep -ai "^$1" "$dir/data/$letter1/$letter2"
 				else
-					letter3=$(echo ${1,,}|$CUT -b3)
+					letter3=$(echo ${1} | $CUT -b3)
 					if [[ $letter3 == [a-zA-Z0-9] ]]; then
 						if [ -f "$dir/data/$letter1/$letter2/$letter3" ]; then
 							grep -ai "^$1" "$dir/data/$letter1/$letter2/$letter3"
