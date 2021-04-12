@@ -41,6 +41,8 @@ Counts how many username:password combos we have imported in the `data`
 Python script to scrape after new combos in anonfiles using google search, it also downloads and extracts them into `inputbreach` folder
 ### query.sh
 Finds combo lines that start with the text provided in the parameters, i.e `./query.sh test@test.com`
+### make_brute_wordlist.sh
+Makes a password list sorted by prominence of each individual password, ideal for using as as wordlist in bruteforcers
 
 ## Disclamer
 Use this only for threat analysis and educational purposes, please.
