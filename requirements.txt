@@ -1,5 +1,6 @@
 beautifulsoup4==4.9.3
 html5lib==1.1
+google==3.0.0
 googlesearch-python==2020.0.2
 lxml==4.6.3
 pyunpack==0.2.2
