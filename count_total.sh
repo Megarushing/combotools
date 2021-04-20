@@ -52,7 +52,7 @@ total=0;
 find data -not -path '*/\.*' | $SORT | while read in;
 do
   if [ -f "$in" ]; then
-    count=$($WC -l $in | $CUT -d' ' -f1);
+    count=$($WC -l "$in" | $CUT -d' ' -f1);
     total=$((total + count));
     echo -n "[*] $in -               " | $CUT -z -b1-22
     echo -n "$count                  " | $CUT -z -b1-10

@@ -74,10 +74,10 @@ shasum="$(sha256sum "$inputfile" | $CUT -d' ' -f1)"
 				filter=$(echo "$path" | sed 's/^.*data//' | sed 's#/##g' | sed 's/symbols$//g' )
 				if [ "$(echo "$path" | grep "symbols$")" == "" ]; then
 					echo "Filter: $filter	Path: $path" | $TEE -a debug.log
-					grep -ai "^$filter\w*\b" $inputfile | LC_CTYPE=C sed 's/\r//g' | grep -a @ >> $path | $TEE -a debug.log
+					grep -ai "^$filter\w*\b" "$inputfile" | LC_CTYPE=C sed 's/\r//g' | grep -a @ >> $path | $TEE -a debug.log
 				else
 					echo "Filter: $filter[symbol]	Path: $path" | $TEE -a debug.log
-					grep -ai "^$filter\w*\b" $inputfile | grep -aiv "^$filter[a-zA-Z0-9]\w*\b" | LC_CTYPE=C sed 's/\r//g' | grep -a @ >> $path | $TEE -a debug.log
+					grep -ai "^$filter\w*\b" "$inputfile" | grep -aiv "^$filter[a-zA-Z0-9]\w*\b" | LC_CTYPE=C sed 's/\r//g' | grep -a @ >> $path | $TEE -a debug.log
 				fi
 			fi
 		done
