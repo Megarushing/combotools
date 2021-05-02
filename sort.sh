@@ -4,51 +4,18 @@ trap '
   trap - INT # restore default INT handler
   kill -s INT "$$"
 ' INT
-
 #if osx coreutils tools are found use them for compatibility
-if ! command -v gsort &> /dev/null
-then
-    SORT=sort
-else
-	SORT=gsort
-fi
+#this replaces sort with gsort, date with gdate and so on...
+for c in "sort" "date" "du" "tee" "cut" "wc" "uniq"
+	do if command -v g$c &> /dev/null
+	then
+    	eval $(echo $c | tr '[:lower:]' '[:upper:]')=g$c
+	else
+		eval $(echo $c | tr '[:lower:]' '[:upper:]')=$c
+	fi
+done
 
-if ! command -v gdate &> /dev/null
-then
-    DATE=date
-else
-	DATE=gdate
-fi
-
-if ! command -v gdu &> /dev/null
-then
-    DU=du
-else
-	DU=gdu
-fi
-
-if ! command -v gtee &> /dev/null
-then
-    TEE=tee
-else
-	TEE=gtee
-fi
-
-if ! command -v gcut &> /dev/null
-then
-    CUT=cut
-else
-	CUT=gcut
-fi
-
-if ! command -v gwc &> /dev/null
-then
-    WC=wc
-else
-	WC=gwc
-fi
-
-# data folder $SORTing
+# data folder sorting
 echo "[*] sorting breaches..." | $TEE -a debug.log
 find data -not -path '*/\.*' | $SORT | while read path;
 do
