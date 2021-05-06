@@ -30,6 +30,7 @@ done
 N=16 #number of simultaneous processes
 ls ./inputbreach |$SORT| sed 's/^/.\/inputbreach\//' | while read inputfile;
 do
+trap 'break' INT #in case of ctrl-c break the loop
 echo "[*] Checking breach $inputfile checksum..." | $TEE -a debug.log
 shasum="$(sha256sum "$inputfile" | $CUT -d' ' -f1)"
 	if [ "$(cat imported.log | grep "$shasum" | $WC -l)" == "0" ]; then
