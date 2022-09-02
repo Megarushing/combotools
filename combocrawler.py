@@ -46,7 +46,7 @@ for s in SEARCHFOR:
 	    dest = url.split("/")[-1].strip().strip("'")
 	    if not dest+"\n" in done:
 	        try:
-	            r = requests.get(url)
+	            r = requests.get(url,verify=False)
 	            html = BeautifulSoup(r.text,"html.parser")
 	            down = html.find(id="download-url")
 	            down = quote(down.get("href").strip()).replace("%3A//","://")
