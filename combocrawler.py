@@ -14,6 +14,8 @@ else:
     from urllib import quote
 import urllib
 import time
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 SEARCHFOR = ["\"combo\" site:anonfile.com","\"Combo\" site:anonfile.com"]
 DOWNLOADED = "downloaded.log"
